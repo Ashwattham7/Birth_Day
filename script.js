@@ -15,7 +15,7 @@ function createBalloons() {
         const balloon = document.createElement('div');
         balloon.className = 'balloons';
 
-        const leftPos = spacing * i + Math.random() * 20 - 10; // slight random offset
+        const leftPos = spacing * i + Math.random() * 20 - 10;
         const duration = 6 + Math.random() * 4;
         const size = 30 + Math.random() * 30;
         const color = colors[Math.floor(Math.random() * colors.length)];
@@ -26,7 +26,9 @@ function createBalloons() {
         balloon.style.height = `${size * 1.2}px`;
         balloon.style.backgroundColor = color;
         balloon.style.animationDuration = `${duration}s`;
-        balloon.style.animationDelay = `0s`; // appear instantly
+        balloon.style.animationDelay = `0s`;
+        balloon.style.zIndex = Math.floor(Math.random() * 11) + 5;
+
 
         const string = document.createElement('div');
         string.className = 'balloon-string';
