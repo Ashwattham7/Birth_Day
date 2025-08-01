@@ -64,6 +64,39 @@ body {
     transform: rotate(352deg);
 }
 
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.box .card {
+    background-color: #fffaf4a8;
+    display: flex;
+    align-items: self-start;
+    justify-content: center;
+    width: 80%;
+    border-radius: 15px;
+}
+
+.card .left-side img{
+    width: 10rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.card .right-side h3{
+    font-family: cursive;
+    font-weight: 700;
+    font-size: 3rem;
+}
+.card .right-side p{
+    font-family: cursive;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
 @media (max-width:750px) {
 
     body {
@@ -114,5 +147,34 @@ body {
         font-size: 95px;
         font-weight: 700;
         transform: rotate(352deg);
+    }
+}
+
+.balloons {
+    position: fixed;
+    width: 50px;
+    height: 60px;
+    background-color: #ff6b6b;
+    border-radius: 50%;
+    opacity: 0.7;
+    z-index: 2;
+    animation: floatBalloon 1s linear infinite;
+}
+
+.balloon-string {
+    position: absolute;
+    bottom: -20px;
+    left: 25px;
+    width: 2px;
+    height: 20px;
+    background-color: #999;
+}
+
+@keyframes floatBalloon {
+    0% {
+        transform: translateY(100vh) translateX(0);
+    }
+    100% {
+        transform: translateY(-450px) translateX(20px);
     }
 }
