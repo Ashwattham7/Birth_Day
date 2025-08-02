@@ -193,25 +193,28 @@ h1 {
         transform: rotate(352deg);
     }
 
-    .card-container{
+    .card-container {
         padding: 1.5rem;
     }
+
     .box {
         flex-wrap: wrap;
         justify-content: center;
     }
-    .box .card{
+
+    .box .card {
         width: 50rem;
         height: 20rem;
     }
 
     .card .right-side h3 {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
+
     .card .right-side p {
-    font-family: cursive;
-    font-size: 2.5rem;
-}
+        font-family: cursive;
+        font-size: 2rem;
+    }
 }
 
 .balloons {
