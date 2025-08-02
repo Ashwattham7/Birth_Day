@@ -204,6 +204,14 @@ h1 {
         width: 50rem;
         height: 20rem;
     }
+
+    .card .right-side h3 {
+        font-size: 1.5rem;
+    }
+    .card .right-side p {
+    font-family: cursive;
+    font-size: 1rem;
+}
 }
 
 .balloons {
