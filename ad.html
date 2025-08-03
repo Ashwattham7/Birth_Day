@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Slideshow with Blurred Navigation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .slideshow-container {
+            position: relative;
+            width: 80vw;
+            height: 60vh;
+            perspective: 1000px;
+        }
+        
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .slide {
+            position: absolute;
+            width: 60%;
+            height: 80%;
+            transition: all 0.8s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            filter: blur(5px);
+            opacity: 0.7;
+            transform: scale(0.8);
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slide.prev {
+            left: 0;
+            z-index: 1;
+            transform: translateX(-20%) scale(0.8);
+        }
+        
+        .slide.next {
+            right: 0;
+            z-index: 1;
+            transform: translateX(20%) scale(0.8);
+        }
+        
+        .slide.active {
+            left: 50%;
+            transform: translateX(-50%) scale(1);
+            z-index: 2;
+            filter: blur(0);
+            opacity: 1;
+            width: 70%;
+            height: 90%;
+        }
+        
+        .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .active .slide-info {
+            opacity: 1;
+        }
+        
+        .navigation {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .nav-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slides">
+            <div class="slide prev">
+                <img src="https://images.unsplash.com/photo-1750801321923-a93fd5e5bf21?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Slide 1">
+                <div class="slide-info">
+                    <h3>Nature Beauty</h3>
+                    <p>Exploring the wonders of the natural world</p>
+                </div>
+            </div>
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1751149784328-f75fb46c0e8d?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Slide 2">
+                <div class="slide-info">
+                    <h3>Urban Landscape</h3>
+                    <p>The vibrant life of modern cities</p>
+                </div>
+            </div>
+            <div class="slide next">
+                <img src="https://images.unsplash.com/photo-1751257983922-a627088d4c21?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Slide 3">
+                <div class="slide-info">
+                    <h3>Tech Innovations</h3>
+                    <p>The future of digital technology</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1751257983922-a627088d4c21?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Slide 4">
+                <div class="slide-info">
+                    <h3>Culinary Delights</h3>
+                    <p>Delicious cuisine from around the world</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1751290741395-8fd9bc214f61?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Slide 5">
+                <div class="slide-info">
+                    <h3>Travel Adventures</h3>
+                    <p>Discover new places and cultures</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <div class="nav-dot active" data-index="0"></div>
+            <div class="nav-dot" data-index="1"></div>
+            <div class="nav-dot" data-index="2"></div>
+            <div class="nav-dot" data-index="3"></div>
+            <div class="nav-dot" data-index="4"></div>
+        </div>
+    </div>
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            let currentIndex = 1; // Start with the second slide as active (index 1)
+            let autoSlideInterval;
+            
+            // Initialize slideshow
+            updateSlides();
+            startAutoSlide();
+            
+            // Navigation dots click event
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                    updateSlides();
+                    resetAutoSlide();
+                });
+            });
+            
+            function updateSlides() {
+                // Update slide classes
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('prev', 'active', 'next');
+                    
+                    if (index === currentIndex - 1) {
+                        slide.classList.add('prev');
+                    } else if (index === currentIndex) {
+                        slide.classList.add('active');
+                    } else if (index === currentIndex + 1) {
+                        slide.classList.add('next');
+                    }
+                });
+                
+                // Update navigation dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+                
+                // Handle wrap-around for prev/next slides
+                if (currentIndex === 0) {
+                    slides[slides.length - 1].classList.add('prev');
+                }
+                if (currentIndex === slides.length - 1) {
+                    slides[0].classList.add('next');
+                }
+            }
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlides();
+            }
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlides();
+            }
+            
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 3000);
+            }
+            
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetAutoSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    resetAutoSlide();
+                }
+            });
+            
+            // Touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.querySelector('.slideshow-container').addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            document.querySelector('.slideshow-container').addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                resetAutoSlide();
+            }, false);
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    nextSlide(); // Swipe left
+                }
+                if (touchEndX > touchStartX + 50) {
+                    prevSlide(); // Swipe right
+                }
+            }
+        });
+    </script> -->
+</body>
+</html>
