@@ -1,63 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Birthday!</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600&family=Dancing+Script:wght@700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ScrollTrigger.create() Example</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .spacer {
+      height: 100vh;
+      background-color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pin-section {
+      height: 100vh;
+      background-color: #ffb6c1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h1>Happy Birthday!</h1>
-            <p class="subtitle">Wishing you a day filled with joy and laughter</p>
-        </header>
 
-        <div class="cake-container">
-            <div class="cake" id="cake">🎂</div>
-            <p>Make a wish and click the cake!</p>
-        </div>
+  <div class="spacer">Scroll Down ⬇️</div>
 
-        <div class="cards-container">
-            <div class="card">
-                <div class="card-icon">🎉</div>
-                <h2>Celebrate You</h2>
-                <p>Today is all about celebrating the amazing person you are. You bring so much light into the lives of
-                    those around you.</p>
-                <p>May this year be filled with happiness, success, and all the things that make you smile.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🎁</div>
-                <h2>Special Wishes</h2>
-                <p>On your special day, we wish you health to keep you strong, wealth to keep you comfortable, and love
-                    to keep you happy.</p>
-                <p>May all your dreams and wishes come true in the coming year!</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🌟</div>
-                <h2>Bright Future</h2>
-                <p>As you celebrate another year of life, may you be blessed with endless opportunities and wonderful
-                    adventures.</p>
-                <p>Your future is as bright as the twinkle in your eyes. Shine on!</p>
-            </div>
-        </div>
+  <div class="pin-section">I will be pinned!</div>
 
-        <div class="wishes">
-            <p>"May your birthday be as special as you are to everyone around you. Wishing you a day filled with love,
-                laughter, and all your heart desires. Cheers to another amazing year!"</p>
-        </div>
-    </div>
+  <div class="spacer">Scroll More ⬇️</div>
 
-    <footer>
-        <p>Made with ❤️ for your special day</p>
-    </footer>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
 
-    <script src="script.js"></script>
+    ScrollTrigger.create({
+      trigger: ".pin-section",
+      start: "top top",      // When the top of the element hits the top of the screen
+      end: "+=100%",         // Stay pinned for one screen height
+      pin: true,             // Makes it "stick"
+      markers: true,         // Shows start and end markers (for learning)
+      onEnter: () => console.log("🔵 Entered pinned section"),
+      onLeave: () => console.log("🔴 Left pinned section"),
+      onEnterBack: () => console.log("🟢 Scrolled back into pinned section"),
+      onLeaveBack: () => console.log("⚪ Left going up")
+    });
+  </script>
 </body>
-
 </html>

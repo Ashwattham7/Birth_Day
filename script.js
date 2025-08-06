@@ -1,60 +1,89 @@
-function throttle(callback, limit) {
-    let wait = false;
-    return function () {
-        if (!wait) {
-            callback.apply(null, arguments);
-            wait = true;
-            setTimeout(() => {
-                wait = false;
-            }, limit);
-        }
-    };
-}
+// let for_all_device = gsap.registerPlugin(ScrollTrigger);
 
-let currentScroll = 0;
-let isScrollingDown = true;
+// function throttle(callback, limit) {
+//     let wait = false;
+//     return function () {
+//         if (!wait) {
+//             callback.apply(null, arguments);
+//             wait = true;
+//             setTimeout(() => {
+//                 wait = false;
+//             }, limit);
+//         }
+//     };
+// }
 
-// Setup marquee animation on slider elements
-let tween = gsap.to(".slider", {
-    xPercent: -100,
-    repeat: -1,
-    duration: 8,
-    ease: "linear",
+// let currentScroll = 0;
+// let isScrollingDown = true;
+
+// // Setup marquee animation on slider elements
+// let tween = gsap.to(".slider", {
+//     xPercent: -100,
+//     repeat: -1,
+//     duration: 8,
+//     ease: "linear",
+// }).totalProgress(0.5);
+
+
+
+// // Scroll handler with throttle
+// window.addEventListener(
+//     "scroll",
+//     throttle(function () {
+//         let newScroll = window.pageYOffset;
+//         isScrollingDown = newScroll > currentScroll;
+
+//         // Reverse or play animation depending on scroll direction
+//         gsap.to(tween, {
+//             timeScale: isScrollingDown ? 1 : -1,
+//         });
+
+//         currentScroll = newScroll;
+//     }, 200)
+
+
+// );
+
+// window.addEventListener("wheel", function (value) {
+//     // console.log(value.deltaY);
+//     if (value.deltaY < 0) {
+//         gsap.to(".slider svg", {
+//             rotate: 0
+//         })
+//     } else {
+//         gsap.to(".slider svg", {
+//             rotate: 180
+//         })
+//     }
+// })
+
+gsap.registerPlugin(ScrollTrigger);
+
+let move = gsap.to(".slider", {
+  xPercent: -100,
+  repeat: -1,
+  duration: 8,
+  ease: "linear",
 }).totalProgress(0.5);
 
+// ScrollTrigger logic to reverse animation on scroll direction
+ScrollTrigger.create({
+  trigger: "body", // Can be any container
+  start: "top top",
+  end: "bottom bottom",
+  onUpdate: (self) => {
+    let direction = self.direction;
 
+    // 1 = scrolling down, -1 = up
+    gsap.to(move, {
+      timeScale: direction === 1 ? 1 : -1,
+    });
 
-// Scroll handler with throttle
-window.addEventListener(
-    "scroll",
-    throttle(function () {
-        let newScroll = window.pageYOffset;
-        isScrollingDown = newScroll > currentScroll;
-
-        // Reverse or play animation depending on scroll direction
-        gsap.to(tween, {
-            timeScale: isScrollingDown ? 1 : -1,
-        });
-
-        currentScroll = newScroll;
-    }, 200)
-
-
-);
-
-window.addEventListener("wheel", function (value) {
-    // console.log(value.deltaY);
-    if (value.deltaY < 0) {
-        gsap.to(".slider svg", {
-            rotate: 0
-        })
-    } else {
-        gsap.to(".slider svg", {
-            rotate: 180
-        })
-    }
-})
-
+    gsap.to(".slider svg", {
+      rotate: direction === 1 ? 180 : 0
+    });
+  },
+});
 
 
 
