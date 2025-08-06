@@ -1,3 +1,63 @@
+function throttle(callback, limit) {
+    let wait = false;
+    return function () {
+        if (!wait) {
+            callback.apply(null, arguments);
+            wait = true;
+            setTimeout(() => {
+                wait = false;
+            }, limit);
+        }
+    };
+}
+
+let currentScroll = 0;
+let isScrollingDown = true;
+
+// Setup marquee animation on slider elements
+let tween = gsap.to(".slider", {
+    xPercent: -100,
+    repeat: -1,
+    duration: 8,
+    ease: "linear",
+}).totalProgress(0.5);
+
+
+
+// Scroll handler with throttle
+window.addEventListener(
+    "scroll",
+    throttle(function () {
+        let newScroll = window.pageYOffset;
+        isScrollingDown = newScroll > currentScroll;
+
+        // Reverse or play animation depending on scroll direction
+        gsap.to(tween, {
+            timeScale: isScrollingDown ? 1 : -1,
+        });
+
+        currentScroll = newScroll;
+    }, 200)
+
+
+);
+
+window.addEventListener("wheel", function (value) {
+    // console.log(value.deltaY);
+    if (value.deltaY < 0) {
+        gsap.to(".slider svg", {
+            rotate: 0
+        })
+    } else {
+        gsap.to(".slider svg", {
+            rotate: 180
+        })
+    }
+})
+
+
+
+
 function createBalloons() {
     const colors = [
         '#ff6b6b', '#ffb8b8', '#ffd166', '#06d6a0', '#118ab2', '#073b4c',

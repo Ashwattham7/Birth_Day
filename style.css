@@ -138,6 +138,38 @@ h1 {
     bottom: 0;
 }
 
+
+
+
+.slider-container {
+    display: flex;
+    overflow: hidden;
+}
+
+.slider {
+    /* width: 100%; */
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: #fffaf4a8;
+    gap: 1rem;
+    /* transform: translateX(-100%); */
+}
+
+.slider h3 {
+    font-size: 70px;
+}
+
+.slider svg {
+    height: 80px;
+    font-weight: 800;
+  /* transform-origin: center center; */
+  /* transition: transform 0.3s ease; */
+}
+
+
 @media (max-width:750px) {
 
     body {
@@ -214,6 +246,10 @@ h1 {
     .card .right-side p {
         font-family: cursive;
         font-size: 0.8rem;
+    }
+
+    .slider {
+        overflow-x: hidden;
     }
 }
 
