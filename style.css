@@ -70,7 +70,7 @@ body {
     transform: rotate(354deg);
 }
 
-h1 {
+.container h1 {
     font-family: cursive;
     position: relative;
     /* top: 510px; */
@@ -179,21 +179,24 @@ h1 {
     z-index: 20;
 }
 
-.animation-card {
-    border-radius: 15px;
-}
 
 .left {
     position: relative;
     margin-top: 1rem;
 }
-.left img{
+
+.left img {
     position: absolute;
     right: 0;
 }
 
 .animation-card img {
     width: 45%;
+}
+
+.animation-card h1{
+    font-size: 2rem;
+    color: #ffff;
 }
 
 @media (max-width:750px) {
@@ -282,9 +285,27 @@ h1 {
         overflow-x: hidden;
     }
 
-    .animation-card-container{
+    .animation-card-container {
         height: 30rem;
     }
+
+    .animation-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .animation-card img {
+        width: 50%;
+    }
+
+    .left img {
+        /* position: absolute; */
+        left: 0;
+    }
+
+
 }
 
 .balloons {
