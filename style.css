@@ -179,27 +179,27 @@ body {
     z-index: 20;
 }
 
-
-.left {
-    position: relative;
-    margin-top: 1rem;
-}
-
-.left img {
-    position: absolute;
-    right: 0;
+.animation-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .animation-card img {
     width: 45%;
 }
 
-.animation-card h1{
+.msg {
+    text-align: center;
+}
+
+.animation-card h1 {
     font-size: 2rem;
     color: #ffff;
     font-family: cursive;
 }
-.animation-card p{
+
+.animation-card p {
     font-size: 1.5rem;
     color: #ffff;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -296,9 +296,6 @@ body {
     }
 
     .animation-card {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         flex-direction: column;
     }
 
@@ -306,9 +303,19 @@ body {
         width: 50%;
     }
 
-    .left img {
-        /* position: absolute; */
-        left: 0;
+    .animation-card h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .animation-card p {
+        font-size: 1rem;
+    }
+
+    .middle {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 2rem;
     }
 
 
