@@ -81,7 +81,7 @@ h1 {
 }
 
 .card-container {
-    padding: 5rem;
+    padding: 3rem;
 }
 
 .box {
@@ -132,7 +132,7 @@ h1 {
 }
 
 .card .svg {
-    width: 40%;
+    width: 50%;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -168,6 +168,33 @@ h1 {
     font-weight: 800;
 }
 
+
+.animation-card-container {
+    background-image: url("Stars.gif");
+    margin-top: 3rem;
+    height: 85rem;
+    padding: 3rem;
+    background-color: black;
+    position: relative;
+    z-index: 20;
+}
+
+.animation-card {
+    border-radius: 15px;
+}
+
+.left {
+    position: relative;
+    margin-top: 1rem;
+}
+.left img{
+    position: absolute;
+    right: 0;
+}
+
+.animation-card img {
+    width: 45%;
+}
 
 @media (max-width:750px) {
 
@@ -247,8 +274,16 @@ h1 {
         font-size: 0.8rem;
     }
 
+    .card .svg {
+        width: 40%;
+    }
+
     .slider {
         overflow-x: hidden;
+    }
+
+    .animation-card-container{
+        height: 30rem;
     }
 }
 
