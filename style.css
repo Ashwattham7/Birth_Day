@@ -248,6 +248,14 @@ body {
     height: 100%;
 }
 
+.moon-box span{
+    font-family: cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 @media (max-width:750px) {
 
     body {
