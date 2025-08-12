@@ -9,7 +9,7 @@ let move = gsap.to(".slider", {
 
 // ScrollTrigger logic to reverse animation on scroll direction
 ScrollTrigger.create({
-  trigger: "body", // Can be any container
+  trigger: "body",
   start: "top top",
   end: "bottom bottom",
   onUpdate: (self) => {
