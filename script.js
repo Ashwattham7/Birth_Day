@@ -28,12 +28,12 @@ ScrollTrigger.create({
 
 // on click picture
 let container = document.querySelector(".moon-box");
-let imge = document.querySelector(".moon-box img");
+let image = document.querySelector(".moon-box img");
 let txt = document.querySelector(".moon-box span");
 
 container.addEventListener("dblclick", function () {
-  imge.style.transform = "scale(1)";
-  imge.style.opacity = 1;
+  image.style.transform = "scale(1)";
+  image.style.opacity = 1;
   txt.style.display= "none";
   image.style.objectFit = "fill";
 })
