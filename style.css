@@ -248,7 +248,7 @@ body {
     height: 100%;
 }
 
-.moon-box span{
+.moon-box span {
     font-family: cursive;
     display: flex;
     align-items: center;
@@ -353,9 +353,10 @@ body {
     .animation-card img {
         width: 50%;
     }
-    .msg{
+
+    .msg {
         text-align: center;
-        padding: .5rem ;
+        padding: .5rem;
     }
 
     .msg h1 {
@@ -365,6 +366,12 @@ body {
 
     .msg p {
         font-size: 1rem;
+        font-family: "Playwrite AU NSW";
+
+    }
+
+    .sec-msg p {
+        text-align: left;
     }
 
     .middle {
@@ -374,7 +381,7 @@ body {
     }
 
 
-    .moon-box{
+    .moon-box {
         width: 95%;
         /* background-image: url("her.jpg"); */
     }
