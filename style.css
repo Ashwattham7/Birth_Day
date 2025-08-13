@@ -343,7 +343,8 @@ body {
     }
 
     .animation-card-container {
-padding: 1rem;    }
+        padding: 1rem;
+    }
 
     .animation-card {
         flex-direction: column;
