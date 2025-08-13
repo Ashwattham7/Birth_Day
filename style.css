@@ -206,7 +206,9 @@ body {
     color: #ffff;
     font-family: cursive;
 }
-
+.sec-msg{
+    margin-top: 2rem;
+}
 .visible-moon-cont {
     display: flex;
     align-items: center;
