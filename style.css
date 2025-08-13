@@ -382,6 +382,9 @@ body {
         margin-top: 2rem;
     }
 
+    .visible-moon-cont {
+        padding: 2rem;
+    }
 
     .moon-box {
         width: 95%;
