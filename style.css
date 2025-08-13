@@ -353,6 +353,10 @@ body {
     .animation-card img {
         width: 50%;
     }
+    .msg{
+        text-align: center;
+        padding: .5rem ;
+    }
 
     .msg h1 {
         font-size: 1.5rem;
@@ -370,6 +374,9 @@ body {
     }
 
 
+    .moon-box{
+        width: 95%;
+    }
 }
 
 .balloons {
