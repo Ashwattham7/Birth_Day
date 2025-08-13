@@ -374,7 +374,7 @@ body {
     }
 
     .sec-msg p {
-        padding: 1.5rem;
+        padding: 0 1.5rem;
         text-align: left;
         font-family: "Mukta";
     }
