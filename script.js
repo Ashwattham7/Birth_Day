@@ -10,13 +10,12 @@ let tl = gsap.timeline();
 
 // });
 
-  gsap.from("#flag", {
-    scale: 0,
-    transformOrigin: "center center", // pop from middle
-    duration: 1.5,
-repeat: -1,
-    ease: "elastic.out(1.75, 0.4)",
-  });
+gsap.from("#flag", {
+  scale: 0,
+  transformOrigin: "center center", // pop from middle
+  duration: 1.5,
+  ease: "elastic.out(1.75, 0.4)",
+});
 
 tl.from(".txt svg", {
   scale: 0.1,
