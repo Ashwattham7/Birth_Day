@@ -1,5 +1,46 @@
 gsap.registerPlugin(ScrollTrigger);
 
+let animations = gsap.matchMedia();
+let tl = gsap.timeline();
+
+// tl.from("#flag", {
+//   scale: 0,
+//   duration: 1.5,
+//   ease: "elastic.out(1.75, 0.4)",
+
+// });
+
+  gsap.from("#flag", {
+    scale: 0,
+    transformOrigin: "center center", // pop from middle
+    duration: 1.5,
+repeat: -1,
+    ease: "elastic.out(1.75, 0.4)",
+  });
+
+tl.from(".txt svg", {
+  scale: 0.1,
+  duration: 1,
+  ease: "elastic.out(1.75, 0.4)",
+
+});
+
+tl.from(".cake", {
+  scale: 0.1,
+  duration: 1,
+  ease: "elastic.out(1.2, 0.4)",
+})
+
+tl.from(".container h1", {
+  scale: 0.1,
+  opacity: 0,
+  duration: 0.5,
+  ease: "elastic.out(1.75, 0.4)",
+}, "-=0.5");
+
+
+
+
 let move = gsap.to(".slider", {
   xPercent: -100,
   repeat: -1,
@@ -34,7 +75,7 @@ let txt = document.querySelector(".moon-box span");
 container.addEventListener("dblclick", function () {
   image.style.transform = "scale(1)";
   image.style.opacity = 1;
-  txt.style.display= "none";
+  txt.style.display = "none";
   image.style.objectFit = "fill";
 })
 
