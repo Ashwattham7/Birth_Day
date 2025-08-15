@@ -25,7 +25,7 @@ body {
     flex-direction: column;
     position: relative;
     top: -5rem;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .intro .flag {
@@ -34,7 +34,7 @@ body {
     margin-top: -400px;
     rotate: 6deg;
     left: 0;
-    overflow-x: hidden;
+    /* overflow-: hidden; */
 }
 
 .txt {

@@ -3,32 +3,32 @@ gsap.registerPlugin(ScrollTrigger);
 let animations = gsap.matchMedia();
 let tl = gsap.timeline();
 
-// tl.from("#flag", {
-//   scale: 0,
-//   duration: 1.5,
-//   ease: "elastic.out(1.75, 0.4)",
-
-// });
-
-gsap.from("#flag", {
+tl.from("#flag", {
+  opacity: 0,
+  delay: .7,
   scale: 0,
-  transformOrigin: "center center", // pop from middle
-  duration: 1.5,
+  duration: .8,
   ease: "elastic.out(1.75, 0.4)",
+
 });
 
 tl.from(".txt svg", {
-  scale: 0.1,
-  duration: 1,
+  sagger: 0.5,
+  scale: 0,
+  duration: .8,
+  transformOrigin: "center center",
+
   ease: "elastic.out(1.75, 0.4)",
 
 });
 
 tl.from(".cake", {
+  // repeat: -1,
+  opacity: 0,
   scale: 0.1,
-  duration: 1,
+  duration: .8,
   ease: "elastic.out(1.2, 0.4)",
-})
+});
 
 tl.from(".container h1", {
   scale: 0.1,
@@ -37,9 +37,23 @@ tl.from(".container h1", {
   ease: "elastic.out(1.75, 0.4)",
 }, "-=0.5");
 
+let tl2 = gsap.timeline();
+tl2.from(".card-container .box ",{
+  opacity: 0,
+  duration: 0.5, // <-- duration belongs here
+  x: 500,
+  stagger: 0.8,
+  scrollTrigger: {
+    trigger: ".card", // or ".card" depending on structure
+    scroller: "body",
+    markers: true,
+    start: "top 50%",
+    // scrub: 1,
+  }
+});
 
 
-
+// SIDER ANIMATION========================================
 let move = gsap.to(".slider", {
   xPercent: -100,
   repeat: -1,
