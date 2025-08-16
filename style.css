@@ -291,8 +291,8 @@ body {
 
     .flag-img {
         width: 100%;
-        margin: -15rem 0 0;
-        /* scale: 1.5; */
+        margin: -14.5rem 0 0;
+        scale: 1.5;
     }
 
     .txt {
@@ -339,7 +339,7 @@ body {
 
     .box .card {
         width: 50rem;
-        height: 20rem;
+        height: 22rem;
     }
 
     .card .right-side h3 {
