@@ -38,7 +38,7 @@ body {
     margin-top: -130px;
     rotate: 6deg;
     left: 0;
-    /* overflow-: hidden; */
+    overflow-x: hidden;
 }
 
 .txt {
@@ -288,7 +288,7 @@ body {
     .container img {
         width: 50%;
         /* position: relative; */
-        margin-top: 3.5rem;
+        margin-top: 6.5rem;
         transform: rotate(354deg);
     }
 
@@ -296,11 +296,13 @@ body {
         text-align: center;
         font-family: cursive;
         font-size: 95px;
-        font-weight: 700;margin-top: 6rem;
+        font-weight: 700;
+        margin-top: 6rem;
     }
 
     .card-container {
         padding: 1.5rem;
+        margin-top: 7rem;
     }
 
     .box {
