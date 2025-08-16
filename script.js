@@ -1,7 +1,9 @@
 gsap.registerPlugin(ScrollTrigger);
 
+
 let animations = gsap.matchMedia();
 let tl = gsap.timeline();
+
 
 tl.from("#flag", {
   opacity: 0,
@@ -38,21 +40,45 @@ tl.from(".container h1", {
 }, "-=0.5");
 
 
-tl.from(".card-container .box  .card", {
+tl.from(".card-container .box .card", {
   opacity: 0,
   x: -300,
-  // skewy: -50,
   duration: 1,
   stagger: { each: 0.5, from: "left" },
   scrollTrigger: {
     trigger: ".card-container .card",
     scroller: "body",
     start: "top 80%",
+    // start: "top 40%",
     // markers: true,
     end: "bottom 120%",
+    // end: "bottom 0%",
     scrub: 3
   },
   ease: "sine.in"
+})
+
+
+
+gsap.to(".animation-card img", {
+  // opacity:0,
+  // y:-100,
+  repeat: -1,
+  yoyo: true,
+  keyframes: [
+    { y: -10, duration: 1.5, ease: "sine.inOut" },
+    { y: 0, duration: 1.5, ease: "sine.inOut" }
+  ],
+});
+
+gsap.from(".moon-box",{
+    repeat: -1,
+  yoyo: true,
+  keyframes: [
+    { y: -10, duration: 1.5, ease: "sine.inOut" },
+    { y: 0, duration: 1.5, ease: "sine.inOut" }
+  ],
+
 })
 
 // SIDER ANIMATION========================================
