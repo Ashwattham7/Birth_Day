@@ -296,8 +296,7 @@ body {
         text-align: center;
         font-family: cursive;
         font-size: 95px;
-        font-weight: 700;
-        transform: rotate(352deg);
+        font-weight: 700;margin-top: 6rem;
     }
 
     .card-container {
