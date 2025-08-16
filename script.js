@@ -37,21 +37,39 @@ tl.from(".container h1", {
   ease: "elastic.out(1.75, 0.4)",
 }, "-=0.5");
 
-let tl2 = gsap.timeline();
-tl2.from(".card-container .box ",{
-  opacity: 0,
-  duration: 0.5, // <-- duration belongs here
-  x: 500,
-  stagger: 0.8,
-  scrollTrigger: {
-    trigger: ".card", // or ".card" depending on structure
-    scroller: "body",
-    markers: true,
-    start: "top 50%",
-    // scrub: 1,
-  }
-});
 
+
+let tl2 = gsap.timeline();
+// tl2.from(".card-container .box ",{
+//   opacity: 0,
+//   duration: 0.5, // <-- duration belongs here
+//   x: 500,
+//   stagger: 0.8,
+//   scrollTrigger: {
+//     trigger: ".card", // or ".card" depending on structure
+//     scroller: "body",
+//     // markers: true,
+//     start: "top 50%",
+//     // scrub: 1,
+//   }
+// });
+
+tl.from(".card-container .box  .card", {
+  // repeat: -1,
+  opacity: 0,
+  // y: -100,
+  // skewy: -50,
+  duration: 1,
+  stagger: 1,
+  scrollTrigger: {
+    trigger: ".card-container .card",
+    scroller: "body",
+    start: "top 60%",
+    // end: "bottom 20%",    
+    scrub: true
+  },
+  ease: "sine.in"
+})
 
 // SIDER ANIMATION========================================
 let move = gsap.to(".slider", {

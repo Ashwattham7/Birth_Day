@@ -56,6 +56,7 @@ body {
 }
 
 .intro img {
+    margin-top: -3.5rem;
     width: 24rem;
     position: absolute;
     top: 350px;
@@ -66,7 +67,7 @@ body {
     font-family: cursive;
     position: relative;
     /* top: 510px; */
-    margin-top: 16rem;
+    margin-top: 10rem;
     font-size: 5rem;
     font-weight: 700;
     transform: rotate(352deg);
