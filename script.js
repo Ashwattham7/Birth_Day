@@ -1,5 +1,24 @@
-gsap.registerPlugin(ScrollTrigger);
+function splitTextToSpans(element) {
+  let text = element.innerText;
+  element.innerHTML = "";
+  text.split("").forEach(char => {
+    let span = document.createElement("span");
+    span.textContent = char;
+    element.appendChild(span);
+  });
+}
 
+document.querySelectorAll(".card").forEach(card => {
+  const h3 = card.querySelector("h3");
+  const p = card.querySelector("p");
+
+  if (h3) splitTextToSpans(h3);
+  if (p) splitTextToSpans(p);
+});
+
+
+// gsap===========================================
+gsap.registerPlugin(ScrollTrigger);
 
 let animations = gsap.matchMedia();
 let tl = gsap.timeline();
@@ -11,15 +30,13 @@ tl.from("#flag", {
   scale: 0,
   duration: .8,
   ease: "elastic.out(1.75, 0.4)",
-
 });
 
 tl.from(".txt svg", {
-  sagger: 0.5,
+  stagger: 0.5,
   scale: 0,
   duration: .8,
   transformOrigin: "center center",
-
   ease: "elastic.out(1.75, 0.4)",
 
 });
@@ -39,7 +56,34 @@ tl.from(".container h1", {
   ease: "elastic.out(1.75, 0.4)",
 }, "-=0.5");
 
+tl.to("#flag", {
+  repeat: -1,
+  yoyo: true,
+  keyframes: [
+    { x: -5, duration: 1.5, ease: "sine.inOut" },
+    { x: 0, duration: 1.5, ease: "sine.inOut" }
+  ],
+}, "move");
 
+tl.to(".txt svg", {
+  repeat: -1,
+  yoyo: true,
+  keyframes: [
+    { y: -5, duration: 1.5, ease: "sine.inOut" },
+    { y: 0, duration: 1.5, ease: "sine.inOut" }
+  ],
+}, "-=0.1");
+
+tl.to(".cake", {
+  repeat: -1,
+  yoyo: true,
+  keyframes: [
+    { y: -10, duration: 1.5, ease: "sine.inOut" },
+    { y: 0, duration: 1.5, ease: "sine.inOut" }
+  ],
+}, "move");
+
+// wishing cards==============================
 tl.from(".card-container .box .card", {
   opacity: 0,
   x: -300,
@@ -52,14 +96,75 @@ tl.from(".card-container .box .card", {
     // start: "top 40%",
     // markers: true,
     end: "bottom 120%",
-    // end: "bottom 0%",
-    scrub: 3
+    toggleActions: "play none none reverse",
+
   },
   ease: "sine.in"
 })
 
 
+document.querySelectorAll(".card").forEach(card => {
 
+  tl.from(card.querySelectorAll("h3 span"), {
+    opacity: 0,
+    duration: 0.1,
+    stagger: 0.1,
+    ease: "power1.out"
+  });
+
+  tl.from(card.querySelectorAll("p span"), {
+    opacity: 0,
+    duration: 0.9,
+    stagger: 0.1,
+    ease: "power1.out"
+  });
+
+  tl.from(card.querySelectorAll("img"), {
+    opacity: 0,
+    y: -300,
+    ease: "power1.out"
+  })
+
+  tl.to(card.querySelectorAll("img"), {
+    // opacity:0,
+    repeat: -1,
+    yoyo: true,
+    keyframes: [
+      { y: -10, duration: 1.5, ease: "sine.inOut" },
+      { y: 0, duration: 1.5, ease: "sine.inOut" }
+    ],
+  });
+});
+
+
+// tl.from(".card img",{
+//   opacity:0,
+//   x:-300
+// })
+//   tl.to(".card img", {
+//     repeat: -1,
+//     yoyo: true,
+//     keyframes: [
+//       { y: -10, duration: 1.5, ease: "sine.inOut" },
+//       { y: 0, duration: 1.5, ease: "sine.inOut" }
+//     ],
+//   });
+
+// tl.from("h3 span", {
+//   opacity: 0,
+//   duration: 0.5,
+//   stagger: 0.05,
+//   ease: "power1.out"
+// })
+// tl.from(".card p span", {
+//   opacity: 0,
+//   duration: 0.5,
+//   stagger: 0.05,
+//   ease: "power1.out"
+// })
+
+
+// moon cards======================================
 gsap.to(".animation-card img", {
   // opacity:0,
   // y:-100,
@@ -71,8 +176,8 @@ gsap.to(".animation-card img", {
   ],
 });
 
-gsap.from(".moon-box",{
-    repeat: -1,
+gsap.from(".moon-box", {
+  repeat: -1,
   yoyo: true,
   keyframes: [
     { y: -10, duration: 1.5, ease: "sine.inOut" },

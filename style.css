@@ -339,14 +339,14 @@ body {
 
     .box .card {
         width: 50rem;
-        height: 22rem;
+        height: 27rem;
     }
 
     .card .right-side h3 {
         font-size: 2rem;
         font-weight: 700;
     }
-
+    
     .card .right-side p {
         font-family: cursive;
         font-size: 1rem;
