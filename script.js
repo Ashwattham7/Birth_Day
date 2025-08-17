@@ -16,6 +16,14 @@ document.querySelectorAll(".card").forEach(card => {
   if (p) splitTextToSpans(p);
 });
 
+document.querySelectorAll(".msg").forEach(txt => {
+  const h1 = txt.querySelector("h1");
+  const p2 = txt.querySelector("p");
+
+  if (h1) splitTextToSpans(h1);
+  if (p2) splitTextToSpans(p2);
+})
+
 
 // gsap===========================================
 gsap.registerPlugin(ScrollTrigger);
@@ -176,6 +184,51 @@ gsap.to(".animation-card img", {
   ],
 });
 
+
+document.querySelectorAll(".msg").forEach(card => {
+  let tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: card,
+      scroller: "body",
+      start: "top 80%",
+      end: "bottom 60%", 
+      toggleActions: "play none none reverse", 
+    }
+  });
+
+  tl2.from(card.querySelectorAll("h1 span"), {
+    opacity: 0,
+    y:50,
+    duration: 0.1,
+    stagger: 0.1,
+    ease: "back.out(2)"
+  });
+
+  tl2.from(card.querySelectorAll("p span"), {
+    opacity: 0,
+    y:30,
+    duration: 0.9,
+    stagger: 0.1,
+    ease: "power1.out"
+  });
+
+  // tl.from(card.querySelectorAll("img"), {
+  //   opacity: 0,
+  //   y: -300,
+  //   ease: "power1.out"
+  // })
+
+  // tl.to(card.querySelectorAll("img"), {
+  //   // opacity:0,
+  //   repeat: -1,
+  //   yoyo: true,
+  //   keyframes: [
+  //     { y: -10, duration: 1.5, ease: "sine.inOut" },
+  //     { y: 0, duration: 1.5, ease: "sine.inOut" }
+  //   ],
+  // });
+});
+
 gsap.from(".moon-box", {
   repeat: -1,
   yoyo: true,
@@ -185,6 +238,7 @@ gsap.from(".moon-box", {
   ],
 
 })
+
 
 // SIDER ANIMATION========================================
 let move = gsap.to(".slider", {

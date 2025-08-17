@@ -156,8 +156,6 @@ body {
 }
 
 
-
-
 .slider-container {
     display: flex;
     overflow: hidden;
@@ -201,6 +199,13 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+/* .msg h1 span, p span {
+  display: inline-block;   
+  margin-right: 0.25em;
+  overflow: hidden;
+} */
+
 
 .msg {
     padding: 2rem;
