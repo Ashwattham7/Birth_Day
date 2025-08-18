@@ -16,13 +16,15 @@ document.querySelectorAll(".card").forEach(card => {
   if (p) splitTextToSpans(p);
 });
 
-document.querySelectorAll(".msg").forEach(txt => {
-  const h1 = txt.querySelector("h1");
-  const p2 = txt.querySelector("p");
+const split = new SplitText(".msg", { type: "chars" });
 
-  if (h1) splitTextToSpans(h1);
-  if (p2) splitTextToSpans(p2);
-})
+// document.querySelectorAll(".msg").forEach(txt => {
+//   const h1 = txt.querySelector("h1");
+//   const p2 = txt.querySelector("p");
+
+//   if (h1) splitTextToSpans(h1);
+//   if (p2) splitTextToSpans(p2);
+// })
 
 
 // gsap===========================================
@@ -30,6 +32,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 let animations = gsap.matchMedia();
 let tl = gsap.timeline();
+// Hide all chars initially
+gsap.set(split.chars, { opacity: 0 });
 
 
 tl.from("#flag", {
@@ -122,7 +126,7 @@ document.querySelectorAll(".card").forEach(card => {
 
   tl.from(card.querySelectorAll("p span"), {
     opacity: 0,
-    duration: 0.9,
+    duration: 0.05,
     stagger: 0.1,
     ease: "power1.out"
   });
@@ -185,49 +189,74 @@ gsap.to(".animation-card img", {
 });
 
 
-document.querySelectorAll(".msg").forEach(card => {
-  let tl2 = gsap.timeline({
-    scrollTrigger: {
-      trigger: card,
-      scroller: "body",
-      start: "top 80%",
-      end: "bottom 60%", 
-      toggleActions: "play none none reverse", 
-    }
-  });
-
-  tl2.from(card.querySelectorAll("h1 span"), {
-    opacity: 0,
-    y:50,
-    duration: 0.1,
-    stagger: 0.1,
-    ease: "back.out(2)"
-  });
-
-  tl2.from(card.querySelectorAll("p span"), {
-    opacity: 0,
-    y:30,
-    duration: 0.9,
-    stagger: 0.1,
-    ease: "power1.out"
-  });
-
-  // tl.from(card.querySelectorAll("img"), {
-  //   opacity: 0,
-  //   y: -300,
-  //   ease: "power1.out"
-  // })
-
-  // tl.to(card.querySelectorAll("img"), {
-  //   // opacity:0,
-  //   repeat: -1,
-  //   yoyo: true,
-  //   keyframes: [
-  //     { y: -10, duration: 1.5, ease: "sine.inOut" },
-  //     { y: 0, duration: 1.5, ease: "sine.inOut" }
-  //   ],
-  // });
+let tl2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".msg",
+    scroller: "body",
+    start: "top 80%",
+    end: "bottom 60%",
+    toggleActions: "play none none reverse",
+  }
 });
+
+// Animate like typing
+tl2.to(split.chars, {
+  y: -20,
+  opacity: 1,
+  duration: 0.05,     // typing speed per char
+  stagger: 0.1,      // delay between each char
+  // ease: "elastic.out(1.5,2)"
+});
+
+// 2nd
+// document.querySelectorAll(".msg").forEach(card => {
+//   let tl2 = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: card,
+//       scroller: "body",
+//       start: "top 80%",
+//       end: "bottom 60%", 
+//       toggleActions: "play none none reverse", 
+//     }
+//   });
+
+//   tl2.from(card.querySelectorAll("h1 span"), {
+//     opacity: 0,
+//     y:50,
+//     duration: 0.1,
+//     stagger: 0.1,
+//     ease: "back.out(2)"
+//   });
+
+//   tl2.from(card.querySelectorAll("p span"), {
+//     opacity: 0,
+//     y:30,
+//     duration: 0.9,
+//     stagger: 0.1,
+//     ease: "power1.out"
+//   });
+
+// 1st-privious
+// tl.from(card.querySelectorAll("img"), {
+//   opacity: 0,
+//   y: -300,
+//   ease: "power1.out"
+// })
+
+// tl.to(card.querySelectorAll("img"), {
+//   // opacity:0,
+//   repeat: -1,
+//   yoyo: true,
+//   keyframes: [
+//     { y: -10, duration: 1.5, ease: "sine.inOut" },
+//     { y: 0, duration: 1.5, ease: "sine.inOut" }
+//   ],
+// });
+// });
+
+tl2.from(".moon-box", {
+  opacity: 0
+})
 
 gsap.from(".moon-box", {
   repeat: -1,

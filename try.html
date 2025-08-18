@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Slide Word Up</title>
+    <style>
+        body {
+            background: #0d0d0d;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 50px;
+        }
+
+        .animation-card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .animation-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .msg {
+            max-width: 600px;
+        }
+
+        .slide-text span {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        img {
+            max-width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="animation-card-container">
+        <div class="animation-card right">
+            <img src="moon1.png" alt="" class="first_moon">
+            <div class="msg">
+                <h1 class="txt-align slide-text">Lorem, ipsum dolor.</h1>
+                <p class="txt-align slide-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro optio sequi exercitationem facere
+                    aperiam aliquam illo dignissimos.
+                </p>
+            </div>
+        </div>
+
+        <div class="animation-card middle">
+            <div class="msg">
+                <h1 class="slide-text">Lorem, ipsum dolor.</h1>
+                <p class="slide-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat velit doloribus nisi odit qui
+                    pariatur rerum.
+                </p>
+            </div>
+            <img src="moon2.png" alt="" class="second_moon">
+        </div>
+    </div>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js"></script>
+
+    <script>
+  gsap.registerPlugin(SplitText);
+
+  // Split into characters
+  const split = new SplitText(".msg", { type: "chars" });
+
+  // Hide all chars initially
+  gsap.set(split.chars, { opacity: 0 });
+
+  // Animate like typing
+  gsap.to(split.chars, {
+    y: -10,
+    opacity: 1,
+    duration: 0.05,     // typing speed per char
+    stagger: 0.1,      // delay between each char
+    ease: "elastic.out(1.5,2)"
+  });
+
+
+    </script>
+
+</body>
+
+</html>
