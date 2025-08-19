@@ -109,7 +109,8 @@ document.querySelectorAll(".card").forEach((card, i) => {
   // animate the whole card
   cardsTl.from(card, {
     opacity: 0,
-    x: -300,
+    scale:0,
+    // x: -300,
     duration: 0.8,
     ease: "sine.in"
   });
