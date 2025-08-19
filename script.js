@@ -123,7 +123,7 @@ document.querySelectorAll(".card").forEach((card, i) => {
   });
 
   // then animate paragraph
-  cardsTl.from(card.querySelectorAll("p span"), {
+  cardsTl.from(card.querySelectorAll("p"), {
     opacity: 0,
     y: 40,
     duration: 0.05,
@@ -139,7 +139,7 @@ document.querySelectorAll(".card").forEach((card, i) => {
   });
 
   // floating effect after image appears
-  gsap.to(card.querySelectorAll("img"), {
+  cardsTl.to(card.querySelectorAll("img"), {
     repeat: -1,
     yoyo: true,
     keyframes: [
@@ -149,30 +149,55 @@ document.querySelectorAll(".card").forEach((card, i) => {
   });
 });
 
-animations.add("(max-width: 799px)", () => {
-  // mobile animation
-  document.querySelectorAll(".card").forEach((card) => {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: card,
-        start: "top 80%",
-        // markers: true,
-      }
-    })
-      .from(card, { opacity: 0, x: -100, duration: 0.6 })
-      .from(card.querySelectorAll("h3 span"), { opacity: 0, stagger: 0.05 })
-      .from(card.querySelectorAll("p span"), { opacity: 0, y: 20, stagger: 0.02 });
-      
-    gsap.to(card.querySelectorAll("img"), {
-      repeat: -1,
-      yoyo: true,
-      keyframes: [
-        { y: -10, duration: 1.5, ease: "sine.inOut" },
-        { y: 0, duration: 1.5, ease: "sine.inOut" }
-      ],
-    });
-  });
-});
+// animations.add("(max-width: 799px)", () => {
+//   document.querySelectorAll(".card").forEach((card) => {
+//     let tl = gsap.timeline({
+//       scrollTrigger: {
+//         trigger: card,
+//         scroller: "body",
+//         start: "top 90%", // adjusted for smaller screens
+//         end: "bottom 95%", // keep card visible longer
+//         toggleActions: "play none none none", // no reverse on mobile
+//         markers: true, // remove after testing
+//       }
+//     });
+
+
+//     tl.from(card, {
+//       opacity: 0,
+//       x: -100,
+//       duration: 0.6,
+//       ease: "sine.in"
+//     })
+//       .from(card.querySelectorAll("h3 span"), {
+//         opacity: 0,
+//         duration: 0.1,
+//         stagger: 0.05,
+//         ease: "power1.out"
+//       })
+//       .from(card.querySelectorAll("p span"), {
+//         opacity: 0,
+//         y: 20,
+//         duration: 0.08,
+//         stagger: 0.02,
+//         ease: "power1.out"
+//       })
+//       .from(card.querySelectorAll("img"), {
+//         opacity: 0,
+//         y: -100,
+//         ease: "power1.out"
+//       });
+//     gsap.to(card.querySelectorAll("img"), {
+//       repeat: -1,
+//       yoyo: true,
+//       keyframes: [
+//         { y: -10, duration: 1.5, ease: "sine.inOut" },
+//         { y: 0, duration: 1.5, ease: "sine.inOut" }
+//       ],
+//     });
+//   });
+// });
+
 
 // tl.from(".card-container .box .card", {
 //   opacity: 0,
