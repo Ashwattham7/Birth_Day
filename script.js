@@ -123,7 +123,7 @@ document.querySelectorAll(".card").forEach((card, i) => {
   });
 
   // then animate paragraph
-  cardsTl.from(card.querySelectorAll("p"), {
+  cardsTl.from(card.querySelectorAll("p span"), {
     opacity: 0,
     y: 40,
     duration: 0.05,
@@ -139,7 +139,7 @@ document.querySelectorAll(".card").forEach((card, i) => {
   });
 
   // floating effect after image appears
-  cardsTl.to(card.querySelectorAll("img"), {
+  gsap.to(card.querySelectorAll("img"), {
     repeat: -1,
     yoyo: true,
     keyframes: [
