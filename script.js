@@ -159,10 +159,18 @@ animations.add("(max-width: 799px)", () => {
         // markers: true,
       }
     })
-    .from(card, { opacity: 0, x: -100, duration: 0.6 })
-    .from(card.querySelectorAll("h3 span"), { opacity: 0, stagger: 0.05 })
-    .from(card.querySelectorAll("p span"), { opacity: 0, y: 20, stagger: 0.02 })
-    .from(card.querySelectorAll("img"), { opacity: 0, y: -100 });
+      .from(card, { opacity: 0, x: -100, duration: 0.6 })
+      .from(card.querySelectorAll("h3 span"), { opacity: 0, stagger: 0.05 })
+      .from(card.querySelectorAll("p span"), { opacity: 0, y: 20, stagger: 0.02 });
+      
+    gsap.to(card.querySelectorAll("img"), {
+      repeat: -1,
+      yoyo: true,
+      keyframes: [
+        { y: -10, duration: 1.5, ease: "sine.inOut" },
+        { y: 0, duration: 1.5, ease: "sine.inOut" }
+      ],
+    });
   });
 });
 
