@@ -124,7 +124,7 @@ document.querySelectorAll(".card").forEach((card, i) => {
   });
 
   // then animate paragraph
-  cardsTl.from(card.querySelectorAll("p"), {
+  cardsTl.from(card.querySelectorAll("p span"), {
     opacity: 0,
     y: 40,
     duration: 0.05,
