@@ -435,6 +435,7 @@ body {
     }
 
     .msg p {
+        /* padding: 1rem; */
         font-size: .9rem;
         font-family: "Playwrite AU NSW";
 

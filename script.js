@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
   closeBtn.addEventListener("click", () => {
     overlay.classList.add("hidden");
     content.classList.remove("hidden");
-    content.style.display = "block";;
+    content.style.display = "block";
     const audio = new Audio("song.mp3");
     document.addEventListener("click", () => {
       audio.play();
