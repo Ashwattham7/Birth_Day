@@ -244,15 +244,15 @@ body {
 .animation-card {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .msg {
-    padding: 2rem;
+    padding: 0 0 0 2rem;
 }
 
 .animation-card img {
-    width: 55%;
+    width: 50%;
 }
 
 .txt-align {
@@ -267,7 +267,7 @@ body {
 }
 
 .msg p {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #ffff;
     /* font-family: cursive; */
     font-family: "Playwrite AU NSW";
@@ -435,7 +435,7 @@ body {
     }
 
     .msg p {
-        font-size: 1rem;
+        font-size: .9rem;
         font-family: "Playwrite AU NSW";
 
     }
