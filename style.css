@@ -86,10 +86,10 @@ body {
     width: 100%;
     overflow: hidden;
     position: relative;
+    z-index: 1;
 }
 
 .container .flag {
-    z-index: 1;
     width: 100%;
     /* margin-top: -130px; */
     transform: rotate(0deg);
